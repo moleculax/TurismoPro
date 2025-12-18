@@ -2,6 +2,7 @@
 Aplicación móvil desarrollada en Flutter para explorar destinos turísticos, visualizar información detallada de ciudades y municipios, y ofrecer una experiencia moderna, rápida y escalable.
 
 ---
+[![GitHub Img](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen.png)](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen.png)
 
 ##  Características principales
 
