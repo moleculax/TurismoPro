@@ -82,21 +82,21 @@ class HomePage extends StatelessWidget { // ← WIDGET (StatelessWidget)
 
                   const SizedBox(width: 20), // ← ESPACIO ENTRE BOTONES
 
-                  Expanded(
-                    child: BotonSiguiente(
-                      nombreUrl: "Pedraza",
-                      url: "https://pedraza.com.ar",
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: BotonSiguiente(
+                  //     nombreUrl: "Pedraza",
+                  //     url: "https://pedraza.com.ar",
+                  //   ),
+                  // ),
 
                   const SizedBox(width: 20),
-
-                  Expanded(
-                    child: BotonSiguiente(
-                      nombreUrl: "Turismo City",
-                      url: "https://www.turismocity.com.ar/",
-                    ),
-                  ),
+                  //
+                  // Expanded(
+                  //   child: BotonSiguiente(
+                  //     nombreUrl: "Turismo City",
+                  //     url: "https://www.turismocity.com.ar/",
+                  //   ),
+                  // ),
                 ],
               ),
             ),

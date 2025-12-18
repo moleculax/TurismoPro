@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'estilosfunc.dart';
 // ← IMPORT NECESARIO PARA NAVEGAR A LA SEGUNDA PÁGINA
 import '../screens//segunda_pagina.dart';
+import 'package:share_plus/share_plus.dart'; // se usa para compartir
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // AJUSTA LA RUTA SEGÚN TU PROYECTO
 
-Row BottonCard(TextStyle estilosBotones) {
+Row BottonCard({required TextStyle estilosBotones, required String name, required String texto}) {
   return Row( // ← WIDGET
     mainAxisAlignment: MainAxisAlignment.spaceAround,
     children: [
@@ -17,10 +18,28 @@ Row BottonCard(TextStyle estilosBotones) {
         onPressed: () {},
         child: Text("Comentar", style: estilosBotones), // ← FIX
       ),
-      TextButton( // ← WIDGET
-        onPressed: () {},
-        child: Text("Compartir", style: estilosBotones), // ← FIX
-      ),
+      // TextButton( // ← WIDGET
+      //   onPressed: () {},
+      //   child: Text("Compartir", style: estilosBotones), // ← FIX
+      // ),
+      TextButton(
+        onPressed: () {
+          Share.share(
+            "Estoy usando la app TurismoPro. Mirá este destino increíble: $name,  $texto ",
+          );
+        },
+        child: Text("Compartir", style: estilosBotones),
+      )
+      // TextButton(
+      //   onPressed: () {
+      //     Share.share(
+      //       "${card["name"]} - ${card["texto"]}",
+      //     );
+      //   },
+      //   child: Text("Compartir", style: estilosBotones),
+      // )
+
+
     ],
   );
 }
