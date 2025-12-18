@@ -4,7 +4,7 @@ import 'estilosfunc.dart';
 import '../screens//segunda_pagina.dart';
 import 'package:share_plus/share_plus.dart'; // se usa para compartir
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// AJUSTA LA RUTA SEGÚN TU PROYECTO
+// AJUSTA LA RUTA
 
 Row BottonCard({required TextStyle estilosBotones, required String name, required String texto}) {
   return Row( // ← WIDGET
