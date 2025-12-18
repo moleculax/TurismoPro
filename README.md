@@ -23,6 +23,7 @@ Aplicación móvil desarrollada en Flutter para explorar destinos turísticos, v
 
 ---
 
+
 ## Tecnologías utilizadas
 
 - **Flutter 3.x**
