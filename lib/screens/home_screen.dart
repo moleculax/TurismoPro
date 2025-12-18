@@ -5,6 +5,15 @@ import '../widgets/funcionesPaginas.dart';
 import '../data/data.dart';
 import '../widgets/estilosfunc.dart';
 
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+
+Future<List<dynamic>> cargarCiudades() async {
+  final url = Uri.parse('https://tu-endpoint.com/ciudades.json');
+  final response = await http.get(url);
+  return jsonDecode(response.body);
+}
 
 /// Pantalla principal
 class HomePage extends StatelessWidget { // ← WIDGET (StatelessWidget)
