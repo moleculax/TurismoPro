@@ -25,7 +25,7 @@ Row BottonCard({required TextStyle estilosBotones, required String name, require
       TextButton(
         onPressed: () {
           Share.share(
-            "Estoy usando la app TurismoPro. Mirá este destino increíble: $name,  $texto ",
+            "Estoy usando la app TurismoPro. Mirá este destino: $name,  $texto ",
           );
         },
         child: Text("Compartir", style: estilosBotones),
