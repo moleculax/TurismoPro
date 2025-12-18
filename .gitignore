@@ -1,0 +1,8 @@
+build/
+android/app/build/
+android/build/
+ios/Flutter/
+ios/build/
+.dart_tool/
+.packages
+.pub/
