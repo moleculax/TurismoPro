@@ -17,6 +17,7 @@ class _LoginPaginaState extends State<LoginPagina> {
   Map<String, dynamic> _responseData = {}; // ← Guarda TODO el objeto JSON recibido del servidor (éxito o error)
   String _mensaje = '';                    // ← Mensaje de éxito o error para mostrar al usuario
   bool _cargando = false;                  // ← Indica si está cargando la petición (para mostrar spinner)
+  String _nombreUsuario = '';              // ← Nueva variable para guardar el nombre y mostrarlo en pantalla
 
   // ← Función que envía email y contraseña al endpoint
   void _login() async {
@@ -25,7 +26,9 @@ class _LoginPaginaState extends State<LoginPagina> {
 
     // ← Validación básica: si falta algún campo, muestra mensaje y no envía
     if (email.isEmpty || pass.isEmpty) {
-      setState(() => _mensaje = 'Por favor completa ambos campos');
+      setState(() {
+        _mensaje = 'Por favor completa ambos campos';
+      });
       return;
     }
 
@@ -34,6 +37,7 @@ class _LoginPaginaState extends State<LoginPagina> {
       _cargando = true;
       _mensaje = '';
       _responseData = {}; // ← Limpia cualquier respuesta anterior
+      _nombreUsuario = ''; // ← Limpia el nombre en cada intento
     });
 
     try {
@@ -48,26 +52,44 @@ class _LoginPaginaState extends State<LoginPagina> {
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
-        // ← Login exitoso: guarda todo el objeto recibido
-        setState(() {
-          _responseData = data;           // ← Aquí está TODO lo que devolvió el backend
-          _mensaje = '¡Login exitoso!';
-        });
+        if (data['status'] == "success") {
+          // ← Muestra siempre el nombre recibido
+          setState(() {
+            _responseData = data;           // ← Aquí está TODO lo que devolvió el backend
+            _mensaje = '¡Login exitoso!';
+            _nombreUsuario = data['data']['nombre']; // ← Guarda el nombre recibido
+          });
+
+          // setState(() {
+          //   _responseData = data;           // ← Aquí está TODO lo que devolvió el backend
+          //   _mensaje = '¡Login exitoso!';
+          // });
+        } else if (data['status'] == "error") {
+          setState(() {
+            _responseData = data;
+            _mensaje = data['message'] ?? 'Error en login';
+            _nombreUsuario = ''; // ← Limpia el nombre si el login es inválido
+          });
+        }
       } else {
         // ← Error del servidor (credenciales incorrectas, etc.): también muestra el objeto
         setState(() {
           _responseData = data;
           _mensaje = data['message'] ?? 'Error: ${response.statusCode}';
+          _nombreUsuario = ''; // ← Limpia el nombre en errores de servidor
         });
       }
     } catch (e) {
       // ← Error de conexión (sin internet, servidor caído, etc.)
       setState(() {
         _mensaje = 'Error de conexión. Verifica tu internet.';
+        _nombreUsuario = ''; // ← Limpia el nombre en error de conexión
       });
     } finally {
       // ← Siempre se ejecuta: quita el indicador de carga
-      setState(() => _cargando = false);
+      setState(() {
+        _cargando = false;
+      });
     }
   }
 
@@ -122,35 +144,47 @@ class _LoginPaginaState extends State<LoginPagina> {
             const SizedBox(height: 20),
 
             // ← Muestra mensaje de éxito o error
-            if (_mensaje.isNotEmpty)
-              Text(
-                _mensaje,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                textAlign: TextAlign.center,
-              ),
+            (_mensaje.isNotEmpty)
+                ? Text(
+              _mensaje,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
+            )
+                : const SizedBox.shrink(),
+
+            const SizedBox(height: 20),
+
+            // ← Muestra el nombre si existe
+            (_nombreUsuario.isNotEmpty)
+                ? Text(
+              _nombreUsuario,
+              style: const TextStyle(color: Colors.white, fontSize: 18),
+            )
+                : const SizedBox.shrink(),
 
             const SizedBox(height: 20),
 
             // ← MUESTRA TODO EL OBJETO JSON RECIBIDO DEL ENDPOINT
-            if (_responseData.isNotEmpty)
-              Expanded( // ← Permite scroll si el JSON es largo
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: SelectableText(
-                      // ← Formatea el JSON con indentación para que sea legible
-                      const JsonEncoder.withIndent('  ').convert(_responseData),
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontFamily: 'monospace', // ← Fuente monoespaciada para alineación perfecta
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.left,
+            (_responseData.isNotEmpty)
+                ? Expanded( // ← Permite scroll si el JSON es largo
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: SelectableText(
+                    // ← Formatea el JSON con indentación para que sea legible
+                    const JsonEncoder.withIndent('  ').convert(_responseData),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontFamily: 'monospace', // ← Fuente monoespaciada para alineación perfecta
+                      height: 1.5,
                     ),
+                    textAlign: TextAlign.left,
                   ),
                 ),
               ),
+            )
+                : const SizedBox.shrink(),
           ],
         ),
       ),

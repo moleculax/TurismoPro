@@ -34,9 +34,9 @@ Row AvatarCard(String name) {
     padding:  const EdgeInsets.only(left:10, right: 10, bottom: 10),
      child: Text( // ← WIDGET
        texto, // viene de objeto data.dart
-       maxLines: 2,
+       maxLines: 100,
        overflow: TextOverflow.ellipsis,
-       textAlign: TextAlign.left,
+       textAlign: TextAlign.justify,
        style: TextStyle(color: Colors.grey),
      ),
    );

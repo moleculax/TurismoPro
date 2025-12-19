@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget { // ← WIDGET (StatelessWidget)
       body: Column( // ← AGREGO COLUMN PARA PODER AGREGAR MÁS WIDGETS
         mainAxisSize: MainAxisSize.max,
         children: [
-          Expanded( // ← AGREGO EXPANDED PARA QUE EL LISTVIEW NO ROMPA EL LAYOUT
+          Expanded( // AGREGO EXPANDED PARA QUE EL LISTVIEW NO ROMPA EL LAYOUT
             child: ListView.builder(
               itemCount: listCard.length,
               itemBuilder: (context,index){
@@ -104,16 +104,38 @@ class HomePage extends StatelessWidget { // ← WIDGET (StatelessWidget)
       ),
       backgroundColor: Colors.green,
       actions: [
-        IconButton(
-          icon: const Icon(Icons.login, color: Colors.white),
-          tooltip: 'Iniciar Sesión',
+        // IconButton(
+        //   icon: const Icon(Icons.login, color: Colors.white),
+        //   tooltip: 'Iniciar Sesión',
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => const LoginPagina()),
+        //     );
+        //   },
+        // ), //aqui boton para llamar otra pagina
+
+        ElevatedButton(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const LoginPagina()),
             );
           },
-        ), //aqui boton para llamar otra pagina
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green[800],           // Fondo azul
+            minimumSize: const Size(60, 60),        // Tamaño cuadrado
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero,      // Esquinas cuadradas
+            ),
+          ),
+          child: const Text('Login', style: TextStyle(color: Colors.white)),
+        ),
+
+
+
+
+
       ],
     );
   }
