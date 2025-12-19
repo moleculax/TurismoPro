@@ -36,8 +36,8 @@ class _LoginPaginaState extends State<LoginPagina> {
     setState(() {
       _cargando = true;
       _mensaje = '';
-      _responseData = {}; // ← Limpia cualquier respuesta anterior
-      _nombreUsuario = ''; // ← Limpia el nombre en cada intento
+      _responseData = {}; // Limpia cualquier respuesta anterior
+      _nombreUsuario = ''; //  Limpia el nombre en cada intento
     });
 
     try {
@@ -48,45 +48,45 @@ class _LoginPaginaState extends State<LoginPagina> {
         body: jsonEncode({'email': email, 'password': pass}),
       );
 
-      // ← Convierte el cuerpo de la respuesta a un Map (objeto JSON)
+      //Convierte  respuesta a un Map (objeto JSON)
       final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         if (data['status'] == "success") {
-          // ← Muestra siempre el nombre recibido
+          //  Muestra nombre
           setState(() {
-            _responseData = data;           // ← Aquí está TODO lo que devolvió el backend
-            _mensaje = '¡Login exitoso!';
-            _nombreUsuario = data['data']['nombre']; // ← Guarda el nombre recibido
+            _responseData = data;           // Aquí está TODO  el backend
+            _mensaje = 'Login EXITOSO';
+            _nombreUsuario = data['data']['nombre']; // Guarda el nombre que viene
           });
 
           // setState(() {
-          //   _responseData = data;           // ← Aquí está TODO lo que devolvió el backend
-          //   _mensaje = '¡Login exitoso!';
+          //   _responseData = data;           /
+          //   _mensaje = '¡Login EXITOSO!';
           // });
         } else if (data['status'] == "error") {
           setState(() {
             _responseData = data;
-            _mensaje = data['message'] ?? 'Error en login';
-            _nombreUsuario = ''; // ← Limpia el nombre si el login es inválido
+            _mensaje = data['message'] ?? 'Error en LOGUEO';
+            _nombreUsuario = ''; // Limpia el nombre
           });
         }
       } else {
-        // ← Error del servidor (credenciales incorrectas, etc.): también muestra el objeto
+        //  Error del servidor todo se fue  a la M...
         setState(() {
           _responseData = data;
           _mensaje = data['message'] ?? 'Error: ${response.statusCode}';
-          _nombreUsuario = ''; // ← Limpia el nombre en errores de servidor
+          _nombreUsuario = ''; //  Limpia el nombre en errores/fallos
         });
       }
     } catch (e) {
-      // ← Error de conexión (sin internet, servidor caído, etc.)
+      //Error de conexión sin internet
       setState(() {
         _mensaje = 'Error de conexión. Verifica tu internet.';
-        _nombreUsuario = ''; // ← Limpia el nombre en error de conexión
+        _nombreUsuario = ''; // Limpia el nombre en error
       });
     } finally {
-      // ← Siempre se ejecuta: quita el indicador de carga
+      //  Siempre se ejecuta
       setState(() {
         _cargando = false;
       });
