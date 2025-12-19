@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'estilosfunc.dart';
 // ← IMPORT NECESARIO PARA NAVEGAR A LA SEGUNDA PÁGINA
-import '../screens//segunda_pagina.dart';
+import '../screens/segunda_pagina.dart';
 import 'package:share_plus/share_plus.dart'; // se usa para compartir
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 // AJUSTA LA RUTA
 
 Row BottonCard({required TextStyle estilosBotones, required String name, required String texto}) {
@@ -43,6 +44,32 @@ Row BottonCard({required TextStyle estilosBotones, required String name, require
     ],
   );
 }
+
+
+
+// Row BotonLogin() {
+//   return Row(
+//     mainAxisAlignment: MainAxisAlignment.center,
+//     children: [
+//       Builder(
+//         builder: (context) => ElevatedButton(
+//           onPressed: () {
+//             Navigator.push(
+//               context,
+//               MaterialPageRoute(builder: (_) => const LogueoPage()),
+//             );
+//           },
+//           child: const Text("Login"),
+//         ),
+//       ),
+//     ],
+//   );
+// }
+
+
+
+
+
 
 
 
