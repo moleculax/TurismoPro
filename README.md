@@ -32,9 +32,7 @@ Aplicación móvil desarrollada en Flutter para explorar destinos turísticos, v
 - **Dart**
 - **Material Design 3**
 - **HTTP / REST APIs**
-- **Provider / Riverpod / Bloc** (según tu implementación)
 - **JSON dinámico y modelos tipados**
-- **Integración con mapas (Google Maps / OpenStreetMap)**
 - **Desarrollo ejecutando  Android Studio en GNU/Linux  (Debian)**
 ---
 
