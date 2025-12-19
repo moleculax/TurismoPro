@@ -13,15 +13,15 @@ Row BottonCard({required TextStyle estilosBotones, required String name, require
     children: [
       TextButton( // ← WIDGET
         onPressed: () {},
-        child: Text("Me Gusta", style: estilosBotones), // ← FIX: sin const
+        child: Text("Me Gusta", style: estilosBotones), //  FIX: sin const
       ),
       TextButton( // ← WIDGET
         onPressed: () {},
-        child: Text("Comentar", style: estilosBotones), // ← FIX
+        child: Text("Comentar", style: estilosBotones), // FIX
       ),
       // TextButton( // ← WIDGET
       //   onPressed: () {},
-      //   child: Text("Compartir", style: estilosBotones), // ← FIX
+      //   child: Text("Compartir", style: estilosBotones), // FIX
       // ),
       TextButton(
         onPressed: () {
@@ -133,7 +133,7 @@ class BotonSiguiente extends StatelessWidget {
             );
           },
           icon: const Icon(Icons.arrow_forward),
-          label: Text(nombreUrl), // ← SE MUESTRA EL NOMBRE
+          label: Text(nombreUrl), //  SE MUESTRA EL NOMBRE
         ),
       ],
     );

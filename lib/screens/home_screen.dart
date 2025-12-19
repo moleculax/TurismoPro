@@ -70,20 +70,29 @@ class HomePage extends StatelessWidget { // ← WIDGET (StatelessWidget)
                       url: "http://moleculaxapp.vercel.app",
                     ),
                   ),
-                  const SizedBox(width: 20), // ← ESPACIO ENTRE BOTONES
+                  const SizedBox(width: 10), //  espacio entre los botones
+                  Expanded(
+                  child: BotonSiguiente(
+                    nombreUrl: "AnamucPro",
+                    url: "https://anamucpro.vercel.app",
+                  ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                  child: BotonSiguiente(
+                    nombreUrl: "FifaPro",
+                    url: "https://fifaproapp.vercel.app",
+                  ),
+                  ),
+
+                  // const SizedBox(width: 10),
                   // Expanded(
-                  // child: BotonSiguiente(
-                  //   nombreUrl: "Goto",
-                  //   url: "https://GotoSera.com.ar",
+                  //   child: BotonSiguiente(
+                  //     nombreUrl: "FifaPro",
+                  //     url: "https://fifaproapp.vercel.app",
+                  //   ),
                   // ),
-                  // ),
-                  const SizedBox(width: 20),
-                  // Expanded(
-                  // child: BotonSiguiente(
-                  //   nombreUrl: "Turismo City",
-                  //   url: "https://www.turismocity.com.ar/",
-                  // ),
-                  // ),
+
                 ],
               ),
             ),
