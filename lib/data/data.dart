@@ -6,7 +6,7 @@ const List<Map<String, String>> listCard =  [
     "texto": "Ciudad cosmopolita con arquitectura europea, vida cultural intensa y una de las avenidas más anchas del mundo, la 9 de Julio."
   },
   {
-    "name": "Cordoba",
+    "name": "Cordova",
     "descripcion": "Cordoba",
     "image": "cordova.jpg",
     "texto": "Centro histórico y universitario del país, rodeado de sierras y con una mezcla única de tradición y modernidad."
