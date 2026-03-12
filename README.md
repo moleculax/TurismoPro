@@ -23,7 +23,7 @@ Aplicación móvil desarrollada en Flutter para explorar destinos turísticos, v
 
 ---
 
-[![GitHub Img](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen2.png)](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen2.png)
+
 
 
 [![GitHub Img](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen3.png)](https://github.com/moleculax/TurismoPro/blob/main/assets/image/screen3.png)
